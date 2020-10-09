@@ -1,30 +1,50 @@
-import { makeStyles } from '@material-ui/core/styles'
 import { NextPage } from 'next'
-import { Typography } from '@material-ui/core'
+import home from 'frontend/layouts/home'
 import React, { ReactElement } from 'react'
-import AppBar from 'frontend/layouts/moduleViewer/AppBar'
+import { useRouter } from 'next/router'
 
-const useStyles = makeStyles((theme) => ({
-  container: {
-    maxWidth: theme.spacing(64),
-    margin: 'auto'
-  },
-  padding: {
-    padding: theme.spacing(2)
-  }
-}))
+import PaperContainer from 'frontend/components/_common/PaperContainer'
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
+import ListItemText from '@material-ui/core/ListItemText'
 
-const Home: NextPage = (): ReactElement => {
-  const classes = useStyles()
+const RootPage: NextPage = (): ReactElement => {
+  const router = useRouter()
 
   return (
-    <>
-      <AppBar title='labbr' />
-      <Typography color={'textPrimary'} variant={'h4'} className={classes.padding}>
-        {'Hello, World!'}
-      </Typography>
-    </>
+    <PaperContainer
+      content={
+        <List
+          dense
+        >
+          <ListItem
+            button
+            onClick={(): void => { router.push('/home/Mydashboard') }}
+          >
+            <ListItemText
+              primary={'Sign in'}
+            />
+          </ListItem>
+          <ListItem
+            button
+            onClick={(): void => { router.push('/users') }}
+          >
+            <ListItemText
+              primary={'Create account'}
+            />
+          </ListItem>
+          <ListItem
+            button
+            onClick={(): void => { router.push('/users') }}
+          >
+            <ListItemText
+              primary={'Forgot password'}
+            />
+          </ListItem>
+        </List>
+      }
+    />
   )
 }
 
-export default Home
+export default home(RootPage)
