@@ -16,6 +16,11 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1
+  },
+  seal: {
+    height: theme.spacing(4),
+    width: theme.spacing(4),
+    marginRight: theme.spacing(2)
   }
 }))
 
@@ -26,6 +31,7 @@ export default ({ title, backRoute }: { title: string; backRoute?: string }): Re
   return (
     <AppBar position={'static'}>
       <Toolbar>
+        <img alt={'labbr'} className={classes.seal} src={'/static/dbl_logo_white.svg'} />
         {backRoute && (
           <IconButton
             className={classes.menuButton}

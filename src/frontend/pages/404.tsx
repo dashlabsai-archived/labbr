@@ -19,7 +19,7 @@ const NotFoundPage: NextPage = (): ReactElement => {
 
   return (
     <>
-      <AppBar title='Project Boilerplate' backRoute='/' />
+      <AppBar title='labbr' backRoute='/' />
       <Typography color={'textPrimary'} variant={'h4'} className={classes.padding}>
         {'Error 404: Page Not Found'}
       </Typography>

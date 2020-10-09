@@ -17,7 +17,7 @@ class MyDocument extends Document {
           {/* <meta property={'og:url'} content={''} /> */}
           {/* <meta property={'og:description'} content={''} /> */}
           {/* <meta property={'og:image'} content={''} /> */}
-          {/* <link rel={'icon'} type={'image/x-icon'} href={''} /> */}
+          <link rel={'icon'} type={'image/x-icon'} href={'/static/dbl_logo_red.png'} />
         </Head>
         <body>
           <Main />

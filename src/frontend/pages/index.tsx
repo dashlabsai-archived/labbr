@@ -19,7 +19,7 @@ const Home: NextPage = (): ReactElement => {
 
   return (
     <>
-      <AppBar title='Project Boilerplate' />
+      <AppBar title='labbr' />
       <Typography color={'textPrimary'} variant={'h4'} className={classes.padding}>
         {'Hello, World!'}
       </Typography>
