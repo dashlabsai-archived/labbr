@@ -7,6 +7,8 @@ import IconButton from '@material-ui/core/IconButton'
 import { AppBar, Toolbar } from '@material-ui/core'
 import ArrowLeftIcon from '@material-ui/icons/ArrowBackIos'
 import Typography from '@material-ui/core/Typography'
+import Brightness4Icon from '@material-ui/icons/Brightness3'
+import Brightness5Icon from '@material-ui/icons/Brightness4'
 
 const useStyles = makeStyles((theme) => ({
   menuButton: {
@@ -39,6 +41,12 @@ export default ({ title, backRoute }: { title: string; backRoute?: string }): Re
         <Typography className={classes.title} variant={'h6'}>
           {title}
         </Typography>
+        <IconButton
+          onClick={(): void => { globalAny.toggleDarkTheme() }}
+          color={'inherit'}
+        >
+          {globalAny.darkTheme ? <Brightness5Icon /> : <Brightness4Icon />}
+        </IconButton>
       </Toolbar>
     </AppBar>
   )

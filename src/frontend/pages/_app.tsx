@@ -38,7 +38,7 @@ class MyApp extends App {
     return (
       <>
         <Head>
-          <title>{'App Boilerplate'}</title>
+          <title>{'labbr'}</title>
           <meta name={'viewport'} content={'minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no'} />
         </Head>
         <ThemeProvider theme={globalAny.darkTheme ? darkTheme : theme}>

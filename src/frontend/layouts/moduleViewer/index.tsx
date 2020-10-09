@@ -6,6 +6,11 @@ import AppBar from './AppBar'
 import { NextPage } from 'next'
 import classnames from 'classnames'
 
+
+import Brightness4Icon from '@material-ui/icons/Brightness3'
+import Brightness5Icon from '@material-ui/icons/Brightness4'
+import IconButton from '@material-ui/core/IconButton'
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -43,7 +48,8 @@ export default (
 
   return (
     <>
-      <AppBar title={title} backRoute={backRoute} />
+      <A title={title} backRoute={backRoute}>
+      </A
       <div className={wide ? classnames(classes.root, classes.wide) : classnames(classes.root, classes.narrow)}>
         <div className={classes.content}>
           <Page />

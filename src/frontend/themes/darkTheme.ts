@@ -5,10 +5,10 @@ export default createMuiTheme({
   palette: {
     background: {
       paper: '#212121',
-      default: '#212121'
+      default: '#333333'
     },
     type: 'dark',
-    primary: { main: '#d22a33' },
+    primary: { main: '#212121' },
     secondary: { main: '#002365' },
     error: red
   }
