@@ -19,6 +19,7 @@ const Home: NextPage = (): ReactElement => {
 
   return (
     <>
+      {/*TO-DO (MIGUEL) > ADD THE AUTHENTICATED LAYOUT SO APPBAR CAN BE PASSED INSTEAD*/}
       <AppBar title='labbr' />
       <Typography color={'textPrimary'} variant={'h4'} className={classes.padding}>
         {'Hello, World!'}
