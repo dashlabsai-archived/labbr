@@ -14,7 +14,7 @@ import theme from 'frontend/themes/theme'
 
 import { ApolloProvider } from '@apollo/react-hooks'
 import client from 'frontend/apollo/client'
-import Notification from 'frontend/components/Notification'
+import Notification from 'frontend/components/_common/Notification'
 
 class MyApp extends App {
   state = {
