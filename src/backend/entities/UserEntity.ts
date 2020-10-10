@@ -3,7 +3,7 @@ import { ObjectId } from '@mikro-orm/mongodb'
 import { BaseEntity } from './BaseEntity'
 
 @Entity()
-export class User extends BaseEntity {
+export class UserEntity extends BaseEntity {
 
   @PrimaryKey()
   _id!: ObjectId

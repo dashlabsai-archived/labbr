@@ -14,12 +14,13 @@ import { resolvers, typeDefs } from './backend/controllers'
 import { Context } from './_types/_backendTypes/context'
 import { verifyJWT } from './backend/_utils/JWT-TEMPLATE'
 
-import { MikroORM } from '@mikro-orm/core'
+import { Connection, IDatabaseDriver, MikroORM } from '@mikro-orm/core'
 import { RequestContext } from '@mikro-orm/core'
 
-import { BaseEntity, User } from './backend/entities'
-const mongoUri: string = process.env.DB_URI
+import { BaseEntity, UserEntity } from './backend/entities'
 
+const mongoUri: string = process.env.DB_URI
+console.log(mongoUri)
 
 const app = express()
 app.set('trust proxy', true)
@@ -30,9 +31,10 @@ const dev = process.env.NODE_ENV !== 'production'
 const nextJSApp = next({ dir: './src/frontend', dev })
 const handle = nextJSApp.getRequestHandler()
 
+
 nextJSApp.prepare().then(async() => {
   const orm = await MikroORM.init({
-    entities: [User, BaseEntity],
+    entities: [UserEntity, BaseEntity],
     dbName: 'labbr',
     type: 'mongo',
     clientUrl: mongoUri
@@ -49,7 +51,8 @@ nextJSApp.prepare().then(async() => {
 
       return {
         ip,
-        currentUserId: verifyJWT(headers.accesstoken)?.id
+        currentUserId: verifyJWT(headers.accesstoken)?.id,
+        em: orm.em.fork()
       }
     },
     formatError: (error: GraphQLError): GraphQLFormattedError => {
