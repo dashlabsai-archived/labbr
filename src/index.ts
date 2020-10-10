@@ -11,8 +11,8 @@ import next from 'next'
 import { parse } from 'url'
 
 import { resolvers, typeDefs } from './backend/controllers'
-import { Context } from './_types/context'
-import { verifyJWT } from './backend/_utils/jwt'
+import { Context } from './_types/_backendTypes/context'
+import { verifyJWT } from './backend/_utils/JWT-TEMPLATE'
 
 const app = express()
 app.set('trust proxy', true)
