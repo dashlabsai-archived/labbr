@@ -5,7 +5,7 @@ export default async (
   dataloaderContext: DataloaderContext,
   emails: string[]
 ): Promise<User[]> => {
-  const users: User[] = await dataloaderContext.databse.users
+  const users: User[] = await dataloaderContext.database.users
   .find({
     email: { $in: emails },
     deleted: { $ne: true }

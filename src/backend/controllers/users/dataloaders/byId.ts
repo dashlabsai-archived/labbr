@@ -6,7 +6,7 @@ export default async (
   dataloaderContext: DataloaderContext,
   ids: ObjectId[]
 ): Promise<User[]> => {
-  const users: User[] = await dataloaderContext.databse.users
+  const users: User[] = await dataloaderContext.database.users
   .find({
     _id: { $in: ids.map((id: ObjectId): ObjectId => new ObjectId(id)) },
     deleted: { $ne: true }

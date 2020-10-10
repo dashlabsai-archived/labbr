@@ -4,6 +4,8 @@ import { User } from '../users'
 
 export interface Context {
   dataloaders?: Dataloaders
-  database: Database
-  returnCurrentUser: () => Promise<User>
+  database?: Database
+  ip?: string | string[]
+  currentUserId?: string
+  returnCurrentUser?: () => Promise<User>
 }

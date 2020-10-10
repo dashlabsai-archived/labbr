@@ -9,10 +9,18 @@ import express from 'express'
 // import helmet from 'helmet'
 import next from 'next'
 import { parse } from 'url'
+import { Db, MongoClient } from 'mongodb'
 
-import { resolvers, typeDefs } from './backend/controllers'
+import { resolvers, typeDefs, buildDataloaders } from './backend/controllers'
 import { Context } from './_types/_backendTypes/context'
 import { verifyJWT } from './backend/_utils/JWT-TEMPLATE'
+import _returnCurrentUser from './backend/_utils/_returnCurrentUser'
+import { ExpressContext } from 'apollo-server-express/dist/ApolloServer'
+
+import { User } from './_types/users'
+import { Database } from './_types/_backendTypes/database'
+
+const mongoUri: string = process.env.DB_URI
 
 const app = express()
 app.set('trust proxy', true)

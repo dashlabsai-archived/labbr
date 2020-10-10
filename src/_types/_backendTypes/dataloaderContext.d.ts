@@ -2,6 +2,6 @@ import { Database } from './database'
 import { User } from '../users'
 
 export interface DataloaderContext {
-  databse: Database
+  database: Database
   returnCurrentUser: () => Promise<User>
 }
