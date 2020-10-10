@@ -1,0 +1,48 @@
+type User {
+  _id: ID!
+  email: String!
+  firstName: String
+  lastName: String
+  password: String
+  token: String
+  createdAt: Date!
+  deletedAt: Date
+  updatedAt: Date
+  deleted: Boolean
+}
+
+type UserToken {
+  token: String
+}
+
+extend type Query {
+  user(
+  _id: ID
+  email: String
+  ): User
+  current_user: User
+}
+
+extend type Mutation {
+  create_user(
+    email: String!
+    firstName: String!
+    lastName: String!
+    password: String!
+  ): User
+  update_user(
+    _id: ID!
+    firstName: String!
+    lastName: String!
+    superuser: Boolean
+  ): User
+  update_user_password(
+    _id: ID!
+    oldPassword: String!
+    newPassword: String!
+  ): User
+  sign_in_user(
+    email: String!
+    password: String!
+  ): UserToken
+}
