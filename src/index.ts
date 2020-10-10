@@ -9,18 +9,17 @@ import express from 'express'
 // import helmet from 'helmet'
 import next from 'next'
 import { parse } from 'url'
-import { Db, MongoClient } from 'mongodb'
 
-import { resolvers, typeDefs, buildDataloaders } from './backend/controllers'
+import { resolvers, typeDefs } from './backend/controllers'
 import { Context } from './_types/_backendTypes/context'
 import { verifyJWT } from './backend/_utils/JWT-TEMPLATE'
-import _returnCurrentUser from './backend/_utils/_returnCurrentUser'
-import { ExpressContext } from 'apollo-server-express/dist/ApolloServer'
 
-import { User } from './_types/users'
-import { Database } from './_types/_backendTypes/database'
+import { MikroORM } from '@mikro-orm/core'
+import { RequestContext } from '@mikro-orm/core'
 
+import { BaseEntity, User } from './backend/entities'
 const mongoUri: string = process.env.DB_URI
+
 
 const app = express()
 app.set('trust proxy', true)
@@ -31,35 +30,16 @@ const dev = process.env.NODE_ENV !== 'production'
 const nextJSApp = next({ dir: './src/frontend', dev })
 const handle = nextJSApp.getRequestHandler()
 
-// const scriptSrc = [
-//   "'self'",
-//   'www.gstatic.com',
-//   '*.googleapis.com',
-//   'https://www.google-analytics.com/analytics.js',
-//   'https://www.googletagmanager.com/gtag/js'
-// ]
+nextJSApp.prepare().then(async() => {
+  const orm = await MikroORM.init({
+    entities: [User, BaseEntity],
+    dbName: 'labbr',
+    type: 'mongo',
+    clientUrl: mongoUri
+  })
 
-// const styleSrc = ["'self'", "'unsafe-inline'", 'www.gstatic.com', '*.googleapis.com']
-
-// if (process.env.NODE_ENV) {
-//   app.use(helmet())
-//   app.use(helmet.frameguard({ action: 'deny' }))
-//   app.use(helmet.referrerPolicy({ policy: 'same-origin' }))
-//   app.use(
-//     helmet.contentSecurityPolicy({
-//       directives: {
-//         defaultSrc: ["'none'"],
-//         fontSrc: ["'self'", 'data:', 'https:'],
-//         imgSrc: ["'self'", 'data:', 'https:'],
-//         connectSrc: ["'self'"],
-//         scriptSrc,
-//         styleSrc
-//       }
-//     })
-//   )
-// }
-
-nextJSApp.prepare().then(() => {
+  return orm
+}).then((orm) => {
   const server = new ApolloServer({
     typeDefs,
     resolvers,
@@ -84,6 +64,10 @@ nextJSApp.prepare().then(() => {
       }
       return error
     }
+  })
+
+  app.use((req, res, next) => {
+    RequestContext.create(orm.em, next)
   })
 
   server.applyMiddleware({ app, path: '/graphql' })

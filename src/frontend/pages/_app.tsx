@@ -16,6 +16,17 @@ import { ApolloProvider } from '@apollo/react-hooks'
 import client from 'frontend/apollo/client'
 import Notification from 'frontend/components/_common/Notification'
 
+
+declare global {
+  namespace NodeJs {
+    interface Global {
+      toggleDarkTheme: VoidFunction
+      darkTheme: boolean
+      setNotification: (type: string, message: string) => void
+    }
+  }
+}
+
 class MyApp extends App {
   state = {
     darkTheme: false

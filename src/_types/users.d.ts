@@ -3,6 +3,7 @@ import { ObjectId } from 'mongodb'
 export interface User {
   _id?: ObjectId
   email?: string
+  name?: string
   firstName?: string
   lastName?: string
   password?: string
@@ -32,10 +33,6 @@ export interface UpdateUserArgs {
 export interface SignInUserArgs {
   email: string
   password: string
-}
-
-export interface UserToken {
-  token: string
 }
 
 export interface DeleteUserArgs {

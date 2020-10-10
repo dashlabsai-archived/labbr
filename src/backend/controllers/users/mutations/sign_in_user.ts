@@ -1,14 +1,13 @@
 import { UserInputError } from 'apollo-server'
-import { encode } from '../../../_utils/jwt'
 import { Context } from '../../../../_types/_backendTypes/context'
-import { UserToken, SignInUserArgs } from '../../../../_types/users'
+import { User, SignInUserArgs } from '../../../../_types/users'
 import * as bcrypt from 'bcrypt'
 
 export default async (
   _root: undefined,
   args: SignInUserArgs,
   context: Context
-): Promise<UserToken> => {
+): Promise<User> => {
   const { email, password } = args
 
   const user = await context.database.users.findOne({
@@ -25,9 +24,5 @@ export default async (
     throw new UserInputError('Invalid password')
   }
 
-  const token = encode(user)
-
-  return {
-    token
-  }
+  return user
 }

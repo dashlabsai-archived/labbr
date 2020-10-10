@@ -10,13 +10,13 @@ import express from 'express'
 // import helmet from 'helmet'
 import { Db, MongoClient } from 'mongodb'
 
-import { resolvers, typeDefs, buildDataloaders } from './backend/controllers'
-import { Context } from './_types/_backendTypes/context'
-import _returnCurrentUser from './backend/_utils/_returnCurrentUser'
+import { resolvers, typeDefs, buildDataloaders } from './controllers'
+import { Context } from '../_types/_backendTypes/context'
+import _returnCurrentUser from './_utils/_returnCurrentUser'
 import { ExpressContext } from 'apollo-server-express/dist/ApolloServer'
 
-import { User } from './_types/users'
-import { Database } from './_types/_backendTypes/database'
+import { User } from '../_types/users'
+import { Database } from '../_types/_backendTypes/database'
 
 const mongoUri: string = process.env.DB_URI
 
@@ -79,31 +79,4 @@ const apolloApp = async (): Promise<void> => {
 }
 
 apolloApp()
-// const scriptSrc = [
-//   "'self'",
-//   'www.gstatic.com',
-//   '*.googleapis.com',
-//   'https://www.google-analytics.com/analytics.js',
-//   'https://www.googletagmanager.com/gtag/js'
-// ]
-
-// const styleSrc = ["'self'", "'unsafe-inline'", 'www.gstatic.com', '*.googleapis.com']
-
-// if (process.env.NODE_ENV) {
-//   app.use(helmet())
-//   app.use(helmet.frameguard({ action: 'deny' }))
-//   app.use(helmet.referrerPolicy({ policy: 'same-origin' }))
-//   app.use(
-//     helmet.contentSecurityPolicy({
-//       directives: {
-//         defaultSrc: ["'none'"],
-//         fontSrc: ["'self'", 'data:', 'https:'],
-//         imgSrc: ["'self'", 'data:', 'https:'],
-//         connectSrc: ["'self'"],
-//         scriptSrc,
-//         styleSrc
-//       }
-//     })
-//   )
-// }
 

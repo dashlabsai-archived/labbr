@@ -7,7 +7,7 @@ import { useQuery } from '@apollo/react-hooks'
 
 import query from './query'
 import { Typography, makeStyles } from '@material-ui/core'
-import PaperContainer from 'frontend/components/PaperContainer'
+import PaperContainer from 'frontend/components/_common/PaperContainer'
 
 const useStyles = makeStyles((theme) => ({
   container: {

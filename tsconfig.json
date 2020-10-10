@@ -10,7 +10,9 @@
     "target": "es2016",
     "isolatedModules": false,
     "esModuleInterop": true,
-    "baseUrl": "./src"
+    "baseUrl": "./src",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
   },
   "exclude": ["src/frontend"]
 }

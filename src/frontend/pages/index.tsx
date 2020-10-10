@@ -27,7 +27,7 @@ const RootPage: NextPage = (): ReactElement => {
           </ListItem>
           <ListItem
             button
-            onClick={(): void => { router.push('/users') }}
+            onClick={(): void => { router.push('/users/create') }}
           >
             <ListItemText
               primary={'Create account'}

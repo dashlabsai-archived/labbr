@@ -8,6 +8,8 @@ import users from './users'
 const emptyDefs = gql`
   type Query
   type Mutation
+
+  scalar Date
 `
 
 export const resolvers = [

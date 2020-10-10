@@ -1,18 +1,14 @@
 type User {
   _id: ID!
   email: String!
+  name: String
   firstName: String
   lastName: String
   password: String
-  token: String
   createdAt: Date!
   deletedAt: Date
   updatedAt: Date
   deleted: Boolean
-}
-
-type UserToken {
-  token: String
 }
 
 extend type Query {
@@ -44,5 +40,5 @@ extend type Mutation {
   sign_in_user(
     email: String!
     password: String!
-  ): UserToken
+  ): User
 }
