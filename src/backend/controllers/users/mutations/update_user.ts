@@ -1,6 +1,7 @@
 import { ForbiddenError } from 'apollo-server'
 import { ObjectId } from 'mongodb'
 import { User, UpdateUserArgs } from '../../../../_types/users'
+import { Context } from '../../../../_types/_backendTypes/context'
 
 export default async (
   _root: undefined,
