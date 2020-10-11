@@ -30,7 +30,7 @@ const PatientsTrackStatus = (): ReactElement => {
   return (
     <CardContainer
       loading={loading}
-      title={'Track swab'}
+      title={'Verify Results'}
       content={
         <>
           <Collapse in={Boolean(searchedEmail)}>
@@ -101,7 +101,7 @@ const PatientsTrackStatus = (): ReactElement => {
               })
             }}
           >
-            {'Track patient'}
+            {'Verify patient'}
           </Button>
         </>
       }
