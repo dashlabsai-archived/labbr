@@ -45,6 +45,7 @@ const PatientsTrackStatus = (): ReactElement => {
             is marked as <b>{'NEGATIVE'}</b>.
           </Typography>
           </Collapse>
+          <Collapse in={Boolean(!searchedEmail)}>
           <TextField
             fullWidth
             margin={'dense'}
@@ -81,6 +82,7 @@ const PatientsTrackStatus = (): ReactElement => {
             }}
             value={email}
           />
+          </Collapse>
         </>
       }
       actions={
