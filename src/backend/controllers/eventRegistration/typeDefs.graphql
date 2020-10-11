@@ -24,4 +24,7 @@ extend type Mutation {
     firstName: String!
     lastName: String!
   ): EventRegistration
+  book_appointment(
+    email: String
+  ): EventRegistration
 }

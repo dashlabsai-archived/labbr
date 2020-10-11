@@ -28,7 +28,7 @@ const UsersCreate = (): ReactElement => {
   const [create, mutationState] = useMutation(mutation, {
     variables: createVariables,
     onCompleted: (): void => {
-      console.log('success', 'User created')
+      globalAny.setNotification('success', 'User created')
     },
     onError: (error): void => {
       console.log('error', error.graphQLErrors.map((e) => e.message).join(''))
