@@ -51,6 +51,7 @@
     "@mikro-orm/core": "^4.0.7",
     "@mikro-orm/mongodb": "^4.0.7",
     "@sendgrid/mail": "^7.2.6",
+    "@types/recharts": "^1.8.16",
     "apollo-cache-inmemory": "^1.6.6",
     "apollo-client": "^2.6.10",
     "apollo-link-context": "^1.0.20",
@@ -75,6 +76,7 @@
     "mongodb": "^3.6.2",
     "next": "^9.5.4",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "recharts": "^1.8.5"
   }
 }
