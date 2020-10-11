@@ -114,8 +114,8 @@ const Dashboard = (): ReactElement => {
                 <YAxis />
                 <Tooltip />
                 <Legend />
-                <Bar dataKey="negative" stackId="a" fill="#8884d8" />
-                <Bar dataKey="positive" stackId="a" fill="#82ca9d" />
+                <Bar dataKey="negative" stackId="a" fill="#82ca9d" />
+                <Bar dataKey="positive" stackId="a" fill="#8884d8" />
               </BarChart>
               </ResponsiveContainer>
             </>
