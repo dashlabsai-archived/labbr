@@ -20,7 +20,7 @@ const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
   cache,
   link: authLink.concat(
     createUploadLink({
-      uri: 'http://localhost:3000/graphql',
+      uri: '/graphql',
       fetch
     })
   )
