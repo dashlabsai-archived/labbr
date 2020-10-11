@@ -35,7 +35,8 @@ const apolloApp = async (): Promise<void> => {
     const db: Db = mongoClient.db('labbr')
 
     const database: Database = {
-      users: db.collection('users')
+      users: db.collection('users'),
+      eventRegistrations: db.collection('eventRegistrations')
     }
     const server = new ApolloServer({
       resolvers: resolvers as Array<IResolvers>,

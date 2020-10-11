@@ -30,7 +30,6 @@ extend type Mutation {
     _id: ID!
     firstName: String!
     lastName: String!
-    superuser: Boolean
   ): User
   update_user_password(
     _id: ID!

@@ -1,0 +1,27 @@
+type EventRegistration {
+  _id: ID!
+  email: String!
+  name: String
+  firstName: String
+  lastName: String
+  createdAt: Date!
+  deletedAt: Date
+  updatedAt: Date
+  deleted: Boolean
+}
+
+extend type Query {
+  event_registration(
+  _id: ID
+  email: String
+  ): EventRegistration
+  event_registrations: [EventRegistration]!
+}
+
+extend type Mutation {
+  create_event_registration(
+    email: String!
+    firstName: String!
+    lastName: String!
+  ): EventRegistration
+}
