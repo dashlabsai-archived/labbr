@@ -2,6 +2,7 @@
 const globalAny: any = global
 import Button from '@material-ui/core/Button'
 import CardContainer from 'frontend/components/_common/CardContainer'
+import PaperContainer from 'frontend/components/_common/PaperContainer'
 import React, { ReactElement, useState } from 'react'
 import TextField from '@material-ui/core/TextField'
 import Typography from '@material-ui/core/Typography'
@@ -96,11 +97,16 @@ const UsersCreate = (): ReactElement => {
             </>
           }
         />
-        <Typography variant="body2">
-          Please check your promotions, junk or spam folder in case you did not get an email. <br/>
-          If you still did not receive an email, click <a href="https://dashlabs.app/labs"> Here </a>
-        </Typography>
-
+        <PaperContainer
+          content = {
+            <p>
+              <Typography variant="body2" color="primary">
+              Please check your promotions, junk or spam folder in case you did not get an email. <br/>
+              If you still did not receive an email, click <a href="https://dashlabs.app/labs" target="__blank"> Here </a>
+              </Typography>
+            </p>
+          }
+        />
 
         </>
   )
