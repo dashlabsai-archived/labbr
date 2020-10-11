@@ -48,8 +48,8 @@ export default (
 
   return (
     <>
-      <A title={title} backRoute={backRoute}>
-      </A
+      <a title={title} href={backRoute}>
+      </a>
       <div className={wide ? classnames(classes.root, classes.wide) : classnames(classes.root, classes.narrow)}>
         <div className={classes.content}>
           <Page />

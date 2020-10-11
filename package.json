@@ -50,6 +50,7 @@
     "@material-ui/styles": "^4.10.0",
     "@mikro-orm/core": "^4.0.7",
     "@mikro-orm/mongodb": "^4.0.7",
+    "@sendgrid/mail": "^7.2.6",
     "apollo-cache-inmemory": "^1.6.6",
     "apollo-client": "^2.6.10",
     "apollo-link-context": "^1.0.20",
