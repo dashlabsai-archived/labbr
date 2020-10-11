@@ -38,7 +38,7 @@ const UsersCreate = (): ReactElement => {
   return (
     <>
       <CardContainer
-          title={'Register to Event'}
+          title={'Register to Game of Code 6'}
           loading={mutationState.loading}
           content={
             <>

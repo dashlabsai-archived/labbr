@@ -33,7 +33,7 @@ const RootPage: NextPage = (): ReactElement => {
           </ListItem>
           <ListItem
             button
-            onClick={(): void => { router.push('/users') }}
+            onClick={(): void => { router.push('/dashboard') }}
           >
           <ListItemIcon>
             <PeopleIcon/>
