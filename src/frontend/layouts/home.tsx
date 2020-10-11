@@ -1,5 +1,5 @@
 //eslint-disable-next-line
-const globalAny: any = global
+const global: any = global
 
 import React, { ReactElement, FunctionComponent } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
