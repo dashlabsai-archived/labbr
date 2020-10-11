@@ -3,7 +3,7 @@ import { ResponsiveContainer, BarChart, Bar, Legend, LineChart, Line, CartesianG
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
 import { List, ListItem, ListItemText, ListItemIcon } from '@material-ui/core'
 import { AddCircleOutline , RemoveCircleOutline } from '@material-ui/icons'
-import { uniqueNamesGenerator, Config, adjectives, colors, animals } from 'unique-names-generator'
+import { uniqueNamesGenerator, Config, adjectives, colors, animals, starWars } from 'unique-names-generator'
 import CardContainer from 'frontend/components/_common/CardContainer'
 
 import Grid from '@material-ui/core/Grid'
@@ -33,9 +33,9 @@ const Dashboard = (): ReactElement => {
   const classes = useStyles()
 
   const customNameConfig: Config = {
-    dictionaries: [adjectives, colors],
+    dictionaries: [starWars],
     separator: ' ',
-    length: 2
+    length: 1
   }
 
   const data = [
