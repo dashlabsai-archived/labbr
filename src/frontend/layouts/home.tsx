@@ -1,5 +1,5 @@
 //eslint-disable-next-line
-const global: any = global
+const globalAny: any = global
 
 import React, { ReactElement, FunctionComponent } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     top: 0,
     bottom: 0,
     position: 'fixed',
-    backgroundImage: global.darkTheme
+    backgroundImage: globalAny.darkTheme
       ? `linear-gradient(${grey[900]}, ${grey[800]})`
       : `linear-gradient(${indigo[900]}, ${indigo[700]})`,
     backgroundSize: 'cover',
