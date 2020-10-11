@@ -102,7 +102,7 @@ const UsersCreate = (): ReactElement => {
             <p>
               <Typography variant="body2" color="primary">
               Please check your promotions, junk or spam folder in case you did not get an email. <br/>
-              If you still did not receive an email, click <a href="https://dashlabs.app/labs" target="__blank"> Here </a>
+              If you still did not receive an email, click <a href="https://labbr.app/labs" target="__blank"> Here </a>
               </Typography>
             </p>
           }
