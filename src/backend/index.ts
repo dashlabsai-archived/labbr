@@ -19,7 +19,7 @@ import { User } from '../_types/users'
 import { Database } from '../_types/_backendTypes/database'
 
 const mongoUri: string = process.env.DB_URI
-
+console.log(mongoUri)
 const app = express()
 app.set('trust proxy', true)
 app.use(cors())

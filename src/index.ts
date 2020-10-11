@@ -10,14 +10,14 @@ import express from 'express'
 import next from 'next'
 import { parse } from 'url'
 
+import { Db, MongoClient } from 'mongodb'
+
 import { resolvers, typeDefs } from './backend/controllers'
 import { Context } from './_types/_backendTypes/context'
 import { verifyJWT } from './backend/_utils/JWT-TEMPLATE'
 
-import { Connection, IDatabaseDriver, MikroORM } from '@mikro-orm/core'
-import { RequestContext } from '@mikro-orm/core'
+import { Database } from './_types/_backendTypes/database'
 
-import { BaseEntity, UserEntity } from './backend/entities'
 
 const mongoUri: string = process.env.DB_URI
 console.log(mongoUri)
@@ -32,16 +32,18 @@ const nextJSApp = next({ dir: './src/frontend', dev })
 const handle = nextJSApp.getRequestHandler()
 
 
-nextJSApp.prepare().then(async() => {
-  const orm = await MikroORM.init({
-    entities: [UserEntity, BaseEntity],
-    dbName: 'labbr',
-    type: 'mongo',
-    clientUrl: mongoUri
+nextJSApp.prepare().then(async () => {
+  // try {
+  const mongoClient: MongoClient = await MongoClient.connect(mongoUri, {
+    useUnifiedTopology: true
   })
 
-  return orm
-}).then((orm) => {
+  const db: Db = mongoClient.db('labbr')
+
+  const database: Database = {
+    users: db.collection('users')
+  }
+
   const server = new ApolloServer({
     typeDefs,
     resolvers,
@@ -52,7 +54,7 @@ nextJSApp.prepare().then(async() => {
       return {
         ip,
         currentUserId: verifyJWT(headers.accesstoken)?.id,
-        em: orm.em.fork()
+        database
       }
     },
     formatError: (error: GraphQLError): GraphQLFormattedError => {
@@ -68,11 +70,6 @@ nextJSApp.prepare().then(async() => {
       return error
     }
   })
-
-  app.use((req, res, next) => {
-    RequestContext.create(orm.em, next)
-  })
-
   server.applyMiddleware({ app, path: '/graphql' })
 
   app.use((req, res) => {
