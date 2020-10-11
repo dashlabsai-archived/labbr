@@ -7,7 +7,7 @@ import PaperContainer from 'frontend/components/_common/PaperContainer'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
-import { ListItemIcon } from '@material-ui/core'
+import { ListItemIcon, Typography } from '@material-ui/core'
 import { AccountCircle } from '@material-ui/icons'
 import PeopleIcon from '@material-ui/icons/People'
 

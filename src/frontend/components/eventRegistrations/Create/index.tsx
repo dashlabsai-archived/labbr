@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button'
 import CardContainer from 'frontend/components/_common/CardContainer'
 import React, { ReactElement, useState } from 'react'
 import TextField from '@material-ui/core/TextField'
+import Typography from '@material-ui/core/Typography'
 import mutation from './mutation'
 import { useMutation } from '@apollo/react-hooks'
 import { CreateEventRegistrationArgs } from '_types/eventRegistration'
@@ -95,6 +96,12 @@ const UsersCreate = (): ReactElement => {
             </>
           }
         />
+        <Typography variant="body2">
+          Please check your promotions, junk or spam folder in case you did not get an email. <br/>
+          If you still did not receive an email, click <a href="https://dashlabs.app/labs"> Here </a>
+        </Typography>
+
+
         </>
   )
 }
