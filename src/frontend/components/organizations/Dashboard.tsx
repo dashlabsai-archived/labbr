@@ -1,14 +1,13 @@
 import React, { ReactElement } from 'react'
 import { ResponsiveContainer, BarChart, Bar, Legend, LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts'
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
-
-import blue from '@material-ui/core/colors/blue'
-import green from '@material-ui/core/colors/green'
-import yellow from '@material-ui/core/colors/yellow'
-import red from '@material-ui/core/colors/red'
+import { List, ListItem, ListItemText, ListItemIcon } from '@material-ui/core'
+import { AddCircleOutline , RemoveCircleOutline } from '@material-ui/icons'
+import { uniqueNamesGenerator, Config, adjectives, colors, animals } from 'unique-names-generator'
 import CardContainer from 'frontend/components/_common/CardContainer'
 
 import Grid from '@material-ui/core/Grid'
+import PaperContainer from '../_common/PaperContainer'
 
 const getRandomInt = (min: number, max: number): number => {
   min = Math.ceil(min)
@@ -33,6 +32,12 @@ const useStyles = makeStyles((theme: Theme) =>
 const Dashboard = (): ReactElement => {
   const classes = useStyles()
 
+  const customNameConfig: Config = {
+    dictionaries: [adjectives, colors],
+    separator: ' ',
+    length: 2
+  }
+
   const data = [
     {
       name: 'Oct 7', negative: getRandomInt(1000,5000), positive: getRandomInt(100,500)
@@ -51,6 +56,20 @@ const Dashboard = (): ReactElement => {
     }
   ]
 
+    const names = []
+    for (let i = 0; i < 6; i++ ) {
+      names.push(
+      <ListItem>
+          <ListItemIcon>
+            {Math.random() < 0.5 ? <AddCircleOutline />: <RemoveCircleOutline /> }
+          </ListItemIcon>
+          <ListItemText
+            primary={uniqueNamesGenerator(customNameConfig)}
+          >
+          </ListItemText>
+        </ListItem>
+      )
+    }
 
   return (
       <div className={classes.root}>
@@ -96,12 +115,12 @@ const Dashboard = (): ReactElement => {
           }
         />
         </Grid>
-        <Grid item xs={10}>
+        <Grid item xs={5}>
         <CardContainer
           title = {'Result Distribution'}
           content = {
             <>
-              <ResponsiveContainer width={'100%'} height={500}>
+              <ResponsiveContainer width={'100%'} height={300}>
 
               <BarChart
                 data={data}
@@ -121,6 +140,20 @@ const Dashboard = (): ReactElement => {
             </>
           }
         />
+        </Grid>
+        <Grid item xs={5}>
+          <CardContainer
+            title = {'Participants Results'}
+            content = {
+              <>
+                <List
+                >
+                  {names}
+
+                </List>
+              </>
+            }
+          />
         </Grid>
       </Grid>
     </div>
