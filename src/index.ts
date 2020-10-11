@@ -41,7 +41,8 @@ nextJSApp.prepare().then(async () => {
   const db: Db = mongoClient.db('labbr')
 
   const database: Database = {
-    users: db.collection('users')
+    users: db.collection('users'),
+    eventRegistrations: db.collection('eventRegistrations')
   }
 
   const server = new ApolloServer({

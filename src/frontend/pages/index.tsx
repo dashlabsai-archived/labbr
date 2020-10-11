@@ -7,6 +7,9 @@ import PaperContainer from 'frontend/components/_common/PaperContainer'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
+import { ListItemIcon } from '@material-ui/core'
+import { AccountCircle } from '@material-ui/icons'
+import PeopleIcon from '@material-ui/icons/People'
 
 const RootPage: NextPage = (): ReactElement => {
   const router = useRouter()
@@ -19,26 +22,24 @@ const RootPage: NextPage = (): ReactElement => {
         >
           <ListItem
             button
-            onClick={(): void => { router.push('/home/Mydashboard') }}
+            onClick={(): void => { router.push('/eventRegistration') }}
           >
+            <ListItemIcon>
+              <AccountCircle/>
+            </ListItemIcon>
             <ListItemText
-              primary={'Sign in'}
-            />
-          </ListItem>
-          <ListItem
-            button
-            onClick={(): void => { router.push('/users/create') }}
-          >
-            <ListItemText
-              primary={'Create account'}
+              primary={'Participant'}
             />
           </ListItem>
           <ListItem
             button
             onClick={(): void => { router.push('/users') }}
           >
+          <ListItemIcon>
+            <PeopleIcon/>
+          </ListItemIcon>
             <ListItemText
-              primary={'Forgot password'}
+              primary={'Organizer'}
             />
           </ListItem>
         </List>
